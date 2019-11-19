@@ -1,9 +1,11 @@
 ---
 title: "ZhangPeng-Project-2 part1"
 output:
-  pdf_document: default
+  github_document:
+    default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r, echo=FALSE}
