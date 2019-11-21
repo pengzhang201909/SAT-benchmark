@@ -252,7 +252,8 @@ obviously, a couple of schools’ numbers almost touched 90 percent.
 
 ### 3-2
 
-Find 10 schools had the highest Benchmark Performance according to BMRs;
+Find 10 schools which had the highest Benchmark Performance according to
+BMRs;
 
 ``` r
 df5 <- df4 %>% filter(year == 2012) %>% arrange(desc(bmr)) %>% head(10)
@@ -274,7 +275,7 @@ df5
     ## 10 Glastonbury     Glastonbury High ~ 2012      459        90      74 0.666
 
 ``` r
-df5 %>% ggplot(aes(x= bmr, y= fct_reorder(school,-bmr))) + geom_point() + labs(title = "2012 Benchmark Performance", x = "Benchmark Meeting Rate", y = "Top 10 Schools", caption = "Graphic 2") + theme_bw()
+df5 %>% ggplot(aes(x= bmr, y= fct_reorder(school,-bmr))) + geom_point() + labs(title = "2012 Highest Benchmark Performance", x = "Benchmark Meeting Rate", y = "Top 10 Schools", caption = "Graphic 2") + theme_bw()
 ```
 
 ![](ZhangPeng-Rproject2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
@@ -299,7 +300,7 @@ df6
     ## 10 Simsbury    Simsbury High School   2013      363        88      74 0.651
 
 ``` r
-df6 %>% ggplot(aes(x= bmr, y= fct_reorder(school,-bmr))) + geom_point() + labs(title = "2013 Benchmark Performance", x = "Benchmark Meeting Rate", y = "Top 10 Schools", caption = "Graphic 3") + theme_bw()
+df6 %>% ggplot(aes(x= bmr, y= fct_reorder(school,-bmr))) + geom_point() + labs(title = "2013 Highest Benchmark Performance", x = "Benchmark Meeting Rate", y = "Top 10 Schools", caption = "Graphic 3") + theme_bw()
 ```
 
 ![](ZhangPeng-Rproject2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
@@ -310,14 +311,15 @@ Let’s find top schools in both 2012 and 2013
 df7 <- df5 %>% semi_join(df6, by = "school") %>% select(2,3,7)
 df8 <- df6 %>% semi_join(df5, by = "school") %>% select(2,3,7)
 df9 <- full_join(df7,df8, by = c("school", "year", "bmr"))
-df9 %>% group_by(school) %>% mutate(mean = mean(bmr)) %>% ggplot(aes(x = bmr, y = fct_reorder(school,-mean), colour = year, shape = year)) + geom_point() + labs(title = "2012-13 Benchmark Performance in Connecticut", x = "Benchmark Meeting Rate", y = "Top Schools", caption = "Graphic 4") + theme_bw()
+df9 %>% group_by(school) %>% mutate(mean = mean(bmr)) %>% ggplot(aes(x = bmr, y = fct_reorder(school,-mean), colour = year, shape = year)) + geom_point() + labs(title = "2012-13 Highest Benchmark Performance in Connecticut", x = "Benchmark Meeting Rate", y = "Top Schools", caption = "Graphic 4") + theme_bw()
 ```
 
 ![](ZhangPeng-Rproject2_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ### 3-3
 
-Find districts had the highest Benchmark Performance according to BMRs
+Find districts which had the highest Benchmark Performance according to
+BMRs
 
 The top three districts in
 2012
@@ -371,9 +373,10 @@ In Connecticut, the percents of Benchmark-Meeting seniors out of all
 seniors in schools were low. For all schools median percent was lower
 than 30%(refer to Graphic 1). In other words, a huge amount of students
 would meet big challenge when they were studing during the first year of
-college. But the situation was changing positively. Mean percent of
-Benchmark-Meeting went up as well as more than 10 schools had kept BMR
-over 65%(refer to Graphic 4).
+college. But the situation was changing positively. In 2013 Median
+percent of Benchmark-Meeting senior students went up as well as more
+than 8 schools had kept over 65% senior students meeting Benchmark in
+both years(refer to Graphic 4).
 
 To helping more senior students in high schools prepared for future
 college life, we can think of more analysis on top Benchmark Performance
