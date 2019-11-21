@@ -40,3 +40,5 @@ percentage.
 This report will try to analyze the distribution of Benchmark
 Performance and its trend among the schools in Connecticut in 2012 and
 2013 , then give some improving suggestions.
+
+![plan.png]()
